@@ -21,8 +21,8 @@ const InputWrapper = styled.div`
 
 export const App: FC = () => {
   const [price, setPrice] = useState(10000);
-  const [count, setCount] = useState(10);
-  let url = '';
+  const [stock, setStock] = useState(10);
+  const [url, setUrl] = useState('');
 
   return (<>
     <InputWrapper>
@@ -36,20 +36,19 @@ export const App: FC = () => {
     <InputWrapper>
       <label className="label">
         <span className="text">お礼の品の在庫</span>
-        <input className="input" type="number" value={count} onChange={(event) => {
-          setCount(Number(event.currentTarget.value));
+        <input className="input" type="number" value={stock} onChange={(event) => {
+          setStock(Number(event.currentTarget.value));
         }} />
       </label>
     </InputWrapper>
     <InputWrapper>
       <label className="label">
         <span className="text">通常購入のURL</span>
-        <input className="input" type="url" onChange={(event) => {
-          url = event.currentTarget.value;
-          console.log(url);
+        <input className="input" type="url" value={url} onChange={(event) => {
+          setUrl(event.currentTarget.value);
         }} />
       </label>
     </InputWrapper>
-    <FormProduct price={price} count={count} url={url} />
+    <FormProduct price={price} stock={stock} url={url} />
   </>)
 };
