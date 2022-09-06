@@ -21,13 +21,13 @@ export const Quantity: FC<Props> = ({ stock, quantity, changeHandler }) => {
     let elements: ReactElement[] = []
     const max: number = stock > 10 ? 10 : stock;
     for (let i = 1; i <= max; i++) {
-      elements.push((<><option value={i} selected={i === quantity} key={i}>{i}</option></>))
+      elements.push((<><option value={i} key={i.toString()}>{i}</option></>))
     }
     return elements;
   })()
   return (<>
     <StyledQuantity>
-      <select name="quantity" onChange={event => {
+      <select name="quantity" defaultValue={1} onChange={event => {
         changeHandler(event);
       }}>
         {options.map(option => option)}
